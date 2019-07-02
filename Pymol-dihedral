@@ -1,0 +1,18 @@
+#Use this script to print a list of dihedral angles of multiple conformers
+#i is the total number of conformers.
+#pymol prints dihedral angles ranging from -180 to 180 degrees. I changed it to 0 to 360 degrees(if dih<0, dih = 360+dih).
+#UNK`16H, UNK`15C are assigned by pymol, change this as needed.
+
+python
+i = 1
+while i <= 17:
+	cmd.select("atm1","/2-"+str(i)+"///UNK`16/H")
+	cmd.select("atm2","/2-"+str(i)+"///UNK`15/C")
+	cmd.select("atm3","/2-"+str(i)+"///UNK`1/C")
+	cmd.select("atm4","/2-"+str(i)+"///UNK`44/H")
+	dih = cmd.get_dihedral("atm1","atm2","atm3","atm4")
+	if dih<0:
+		dih = 360+dih
+	print dih
+	i = i+1
+python end
