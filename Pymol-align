@@ -1,0 +1,15 @@
+#Align selected part of multiple conformers
+#i is total number of conformers
+#I named my conformers as 7-1, 7-2, etc., change this as needed.
+#UNK`4/C, UNK`6/C are assigned by pymol. Change this as needed.
+
+python
+i = 1
+j = 1
+while i <= 23:
+  cmd.select("selection"+str(i),"/7-"+str(i)+"///UNK`4/C, /7-"+str(i)+"///UNK`6/C, /7-"+str(i)+"///UNK`7/C, /7-"+str(i)+"///UNK`8/C")
+  i = i+1
+while j <=22:
+  cmd.align("selection"+str(j+1), "selection1")
+  j = j+1
+python end
